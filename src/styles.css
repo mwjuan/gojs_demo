@@ -1,0 +1,54 @@
+@import 'antd/dist/antd.css';
+
+.App {
+	font-family: sans-serif;
+	text-align: center;
+}
+
+.title {
+	background: rgb(121, 242, 157);
+}
+
+.wrapper {
+	display: grid;
+	grid-template-columns: 200px 1fr;
+}
+.diagram-component {
+	height: calc(100vh - 78px);
+	background-color: white;
+}
+
+.palette-component {
+	box-sizing: border-box;
+	background-color: white;
+	border-right: solid 1px black;
+	height: calc(100vh - 78px);
+}
+
+.ggedtior {
+	height: calc(100vh - 78px);
+}
+
+.graph {
+	position: relative;
+	height: calc(100vh - 78px);
+	overflow: hidden;
+	background: #f6f7f9;
+}
+.itemPanel {
+	float: left;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 24px;
+	height: calc(100vh - 78px);
+	background: #ffffff;
+	border-right: 1px solid #e8e8e8;
+}
+.item {
+	margin-bottom: 24px;
+	user-select: none;
+}
+img {
+	display: block;
+}

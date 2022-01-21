@@ -1,0 +1,21 @@
+.gojs-wrapper-div {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    /* width: 600px;
+    height: 500px; */
+  }
+  
+  .diagram-component {
+    flex-grow: 1;
+  }
+  
+  .palette-component {
+    width: 200px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: beige;
+  }
+  

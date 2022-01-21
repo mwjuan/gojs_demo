@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+#myDiagramDiv {
+  background-color: #F8F8F8;
+  border: 1px solid #aaa;
+}
+
+.myDiagram {
+  width: 70%;
+  height: 400px;
+}
