@@ -12,19 +12,6 @@ export default class StructureView extends Component {
   }
   componentDidMount() {
     if (!this.diagramRef.current) return;
-    const diagram = this.diagramRef.current.getDiagram(); // refs are up-to-date
-    // if (diagram instanceof go.Diagram) {
-    //   diagram.addDiagramListener(
-    //     "ChangedSelection",
-    //     this.props.onDiagramChange
-    //   );
-    //   diagram.addDiagramListener(
-    //     "ExternalObjectsDropped",
-    //     this.props.onDiagramChange
-    //   );
-    //   // force a re-render so Overview.observed gets set now that the Diagram is initialized
-    //   this.forceUpdate();
-    // }
   }
 
   componentWillUnmount() {
