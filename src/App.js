@@ -1,4 +1,3 @@
-import StructureView from "./Charts";
 import React from 'react';
 import GgEditor from './gg-editor';
 import './styles.css';
@@ -12,7 +11,6 @@ const EnterPage = () => {
     <div>
       <Tabs defaultActiveKey="1" centered>
         <TabPane tab="gojs" key="1">
-          {/* <StructureView /> */}
           <GojsDemo />
         </TabPane>
         <TabPane tab="GGEditor" key="2">

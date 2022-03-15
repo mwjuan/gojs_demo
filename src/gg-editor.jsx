@@ -9,40 +9,49 @@ import GGEditor, {
 } from 'gg-editor';
 import './styles.css';
 
-const GgEditor = () => {
+const GgEditor = (props) => {
+    /** 
+     * 流程图数据
+     * node 是节点
+     * id为唯一标识，label为节点显示内容，x、y为节点坐标，size为节点大小，type为节点类型，和RegisterNode name对应
+     * 
+     * edge 是连接节点的连线
+     * id为唯一标识，label为线中显示的内容，source为连线起点node id，target为连线终点node id
+     * 
+     * */
     const dataSource = {
-        nodes: [],
+        nodes: [
+            // {
+            //     id: '0',
+            //     label: 'Node',
+            //     x: 55,
+            //     y: 55,
+            //     size: 50,
+            //     type: 'customCircleNode'
+            // },
+            // {
+            //     id: '1',
+            //     label: 'Node',
+            //     x: 55,
+            //     y: 255,
+            // },
+        ],
         edges: [
-            {
-                source: '0',
-                sourceAnchor: 1,
-                target: '1',
-                targetAnchor: 0
-            },
-            {
-                source: '1',
-                sourceAnchor: 1,
-                target: '2',
-                targetAnchor: 0
-            },
-            {
-                source: '2',
-                sourceAnchor: 1,
-                target: '3',
-                targetAnchor: 0
-            },
-            {
-                source: '3',
-                sourceAnchor: 1,
-                target: '4',
-                targetAnchor: 0
-            }
+            // {
+            //     label: 'Label',
+            //     source: '0',
+            //     target: '1',
+            // },
         ]
     };
 
+    /**
+     * RegisterNode配置
+     * 
+     * */
     const config = {
         setState(name, value, item) {
-            console.log({name,value,item})
+            // 设置连接点(锚点)的状态样式
             setAnchorPointsState.call(
                 this,
                 name,
@@ -66,50 +75,41 @@ const GgEditor = () => {
                 }
             );
         },
-        getAnchorPoints() {
+        getAnchorPoints() {  // 节点可选的连接点集合，该点有4个可选的连接点
             return [
-                [0.5, 0],
-                [0.5, 1],
-                [0, 0.5],
-                [1, 0.5]
+                [0.5, 0], // 上边中点
+                [0.5, 1], // 下边中点
+                [0, 0.5], // 左边中点
+                [1, 0.5], // 右边中点
             ];
-        }
-    };
-
-    const onAfterUpdateItem = (e) => {
-        // console.log('e: ', e)
+        },
     };
 
     const onAfterAddItem = (e) => {
-        dataSource.nodes = [
-            ...dataSource.nodes,
-            {
-                id: `${dataSource.nodes.length}`,
-                x: e.model.x,
-                y: e.model.y,
-                label: e.model.label,
-                type: 'customCircleNode',
-                size: 50
-            }
-        ];
-        console.log(dataSource);
-    };
+        console.log(e.model)
+    }
+
+    const onAfterConnect = (e) => {
+        console.log(e)
+    }
 
     return (
         <GGEditor className="ggedtior">
             <ItemPanel className="itemPanel">
+                {/* 模块节点 */}
                 <Item
                     className="item"
                     model={{
-                        type: 'customCircleNode',
+                        type: 'customCircleNode', // 与RegisterNode中的name对应
                         size: 50,
-                        label: 'Start'
+                        label: 'Start' // 拖拽到FLow中时显示的初始内容
                     }}>
+                    {/* Item显示为一张图片 */}
                     <img
                         src="https://gw.alicdn.com/tfs/TB1IRuSnRr0gK0jSZFnXXbRRXXa-110-112.png"
                         width="55"
                         height="56"
-                        draggable={false}
+                        draggable={false}  // 设置为false时，拖拽只显示虚线框，为true时，显示为图片
                         alt=""
                     />
                 </Item>
@@ -171,16 +171,14 @@ const GgEditor = () => {
                     />
                 </Item>
             </ItemPanel>
-            <Flow
-                className="graph"
-                data={dataSource}
-                onAfterUpdateItem={onAfterUpdateItem}
-                onAfterAddItem={onAfterAddItem}
-            />
+            {/* 流程图组件，data为数据源 */}
+            <Flow className='graph' data={dataSource} onAfterAddItem={onAfterAddItem} onAfterConnect={onAfterConnect}/>
+            {/* 流程图节点，config为配置项，extend为节点形状 */}
             <RegisterNode name="customRectNode" config={config} extend="rect" />
             <RegisterNode name="customEllipseNode" config={config} extend="ellipse" />
             <RegisterNode name="customDiamondNode" config={config} extend="diamond" />
             <RegisterNode name="customCircleNode" config={config} extend="circle" />
+            {/* 节点编辑标签 */}
             <EditableLabel />
         </GGEditor>
     );
