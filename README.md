@@ -1,4 +1,4 @@
-### GoJS
+# GoJS
 GoJS是一款非常方便的开发交互式流程图、组织结构图、设计工具、规划工具、可视化语言的JavaScript图表库。[gojs官方在线预览](https://gojs.net/latest/samples/flowchart.html)
 ![image](https://user-images.githubusercontent.com/50393260/159124672-3f251d57-e48a-4069-9305-79ceed5696d1.png)
 
@@ -12,7 +12,7 @@ GoJS是一款非常方便的开发交互式流程图、组织结构图、设计�
 
 缺点：有水印、属于商业产品需付费
 
-### 参考：
+# 参考：
 [gojs](https://gojs.net/latest/)
 
 [Gojs React Examples](https://codesandbox.io/examples/package/gojs-react)
